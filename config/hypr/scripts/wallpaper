@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+
+currentWall=$(ls ~/Pictures/wallpapers/ | wofi --show dmenu)
+
+rm ~/Pictures/wallpapers/current/$(ls ~/Pictures/wallpapers/current/)
+cp ~/Pictures/wallpapers/backgrounds/$currentWall ~/Pictures/wallpapers/current/
+
+rm $HOME/.config/hypr/hyprpaper.conf
+touch $HOME/.config/hypr/hyprpaper.conf
+echo "preload = ~/Pictures/wallpapers/current/$(ls ~/Pictures/wallpapers/current/)" >> $HOME/.config/hypr/hyprpaper.conf
+echo "wallpaper = HDMI-A-1,~/Pictures/wallpapers/current/$(ls ~/Pictures/wallpapers/current/)" >> $HOME/.config/hypr/hyprpaper.conf
+echo "ipc = off" >> $HOME/.config/hypr/hyprpaper.conf
+
+wal -i ~/Pictures/wallpapers/current/$(ls ~/Pictures/wallpapers/current)
+cp $HOME/.cache/wal/colors-kitty.conf $HOME/.config/kitty/kitty-theme.conf
+echo "background_opacity 0.85" >> $HOME/.config/kitty/kitty-theme.conf
+
+rm $HOME/.config/hypr/colors
+touch $HOME/.config/hypr/colors
+echo "$(sed 's/#//g' $HOME/.cache/wal/colors-hyprland)" >> $HOME/.config/hypr/colors
+
+hyprctl reload
+
+killall hyprpaper | killall waybar && waybar | hyprpaper

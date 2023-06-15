@@ -1,0 +1,289 @@
+{
+    "layer": "top",   
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 44,
+    "modules-left": [ "cpu", "memory","temperature", "mpris","custom/pomodoro"],
+    "modules-center": ["wlr/workspaces"],
+    "modules-right": ["hyprland/language","custom/pacman","custom/weather","pulseaudio","pulseaudio#microphone","clock"],
+    "hyprland/window": {
+        "format": "{}"
+    },
+
+    "wlr/workspaces": {
+        "disable-scroll": true,
+        "sort-by-number": true,
+        "format": "{icon}",
+        "format-icons": {
+          "1": "<span foreground='#9ec49f'></span>",
+          "2": "<span foreground='#74c7ec'></span>",
+          "3": "<span foreground='#c6a679'></span>",
+          "4": "<span foreground='#c49ea0'></span>",
+          "5": "<span foreground='#a39ec4'></span>",
+          "6": "<span foreground='#c6a679'></span>",
+          "7": "<span foreground='#7aa89f'></span>",
+          "8": "<span foreground='#a39ec4'></span>",
+          "9": "<span foreground='#f7768e'></span>",
+          "10": "<span foreground='#9ece6a'></span>",
+          "11": "<span foreground='#7dcfff'></span>",
+          "12": "<span foreground='#fab387'></span>",
+          "13": "<span foreground='#eba0ac'></span>",
+          "14": "<span foreground='#cba6f7'></span>",
+          "15": "<span foreground='#f5c2e7'>15</span>",
+          "16": "<span foreground='#b4befe'>16</span>",
+          "17": "<span foreground='#fab387'>17</span>"
+        },
+        "persistent_workspaces": {
+          "1": [],
+          "2": [],
+          "3": [],
+          "4": [],
+          "5": [],
+          "6": []
+        },
+        "all-outputs": true,
+        "on-click": "activate"
+    },
+    
+    "tray": {
+        "icon-size": 18,
+        "spacing": 6,
+        "show-passive-items": false
+    },
+
+    "cpu": {
+      "interval": 1,
+      "format": " {}%",
+      "max-length": 10,
+      "on-click": "",
+    },
+
+    "memory": {
+      "interval": 5,
+      "format":" {used:0.1f}GB",
+      "max-length": 10,
+      "on-click": "alacritty -e htop"
+    },
+
+    "temperature": {
+      // "thermal-zone": 2,
+      "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+      "critical-threshold": 80,
+      // "format-critical": "{temperatureC}°C ",
+      "format": " {temperatureC}°C"
+    },
+
+    "clock": {
+        "format": "{: %a, %b %e %I:%M %p }",
+        "format-alt":"{: %a, %b %e}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "backlight": {
+      "device": "intel_backlight",
+      "format": "{icon} {percent}%",
+      "format-icons": ["", "", ""],
+      "on-scroll-up": "brightnessctl set 1%+",
+      "on-scroll-down": "brightnessctl set 1%-",
+      "min-length": 6
+    },
+
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 20
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", "", "", ""]
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "tooltip": false,
+        "format-muted": " Muted",
+        "on-click": "pamixer -t",
+        "on-right-click": "exec pavucontrol",
+        "on-scroll-up": "pamixer -i 5",
+        "on-scroll-down": "pamixer -d 5",
+        "scroll-step": 5,
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        }
+    },
+
+    "pulseaudio#microphone": {
+        "format": "{format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": " Muted",
+        "on-click": "pamixer --default-source -t",
+        "on-scroll-up": "pamixer --default-source -i 5",
+        "on-scroll-down": "pamixer --default-source -d 5",
+        "scroll-step": 5
+    },
+    
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "  {signalStrength}%",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{essid} - {ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}"
+    },
+
+    "bluetooth": {
+	    "format": " {status}",
+	    "format-disabled": "", // an empty format will hide the module
+	    "format-connected": " {num_connections}",
+	    "tooltip-format": "{device_alias}",
+	    "tooltip-format-connected": " {device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}"
+    },
+     
+    "mpris": {
+      "title-len": 20,
+      "interval":1,
+      "album-len":0,
+      "max-len": 20,
+      "format": "{player_icon} {dynamic}",
+      "format-paused": "{player_icon} {dynamic}",
+      "player-icons": {
+        "default": "▶",
+        "mpv": "🎵",
+        "spotify": " ",
+        "firefox": " ",
+        "chromium": " "
+      },
+      "status-icons": {
+        "paused": ""
+      },
+      // "ignored-players": ["vlc", "firefox"]
+    },
+     
+    "mpd": {
+      "format": "{stateIcon} {artist} -  {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+      "format-disconnected": "Disconnected ",
+      "format-stopped": "{stateIcon} {artist} -  {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+      "interval": 2,
+      "consume-icons": {
+        "on": " " // Icon shows only when "consume" is on
+      },
+      "repeat-icons": {
+        "on": " "
+      },
+      "single-icons": {
+        "on": "1 "
+      },
+      "state-icons": {
+        "paused": "",
+        "playing": ""
+      },
+      "tooltip-format": "MPD (connected)",
+      "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+
+    "custom/pacman": {
+      "format": " {}",
+      "interval" : 100,
+      "exec" : "~/.local/scripts/checkupdate",
+      "exec-if" : "exit 0",
+      "on-click": "alacritty -e paru"
+    },
+    
+   "custom/pomodoro": {
+      "exec": "i3-gnome-pomodoro status --format=waybar --show-seconds | awk '{gsub(/Pomodoro /,\"\")}1'",
+       "return-type": "json",
+       "interval": 1,
+       "format": " {}",
+       "on-click": "i3-gnome-pomodoro toggle",
+       "on-middle-click": "i3-gnome-pomodoro stop",
+       "on-right-click": "i3-gnome-pomodoro start-stop"
+    },
+
+    // "custom/pomodoro": {
+    //   "exec": "i3-gnome-pomodoro status --format=waybar --show-seconds",
+    //   "return-type": "json",
+    //   "interval": 1,
+    //   "format": "{}",
+    //   "on-click": "i3-gnome-pomodoro start",
+    //   "on-middle-click": "i3-gnome-pomodoro toggle",
+    //   "on-right-click": "i3-gnome-pomodoro stop"
+    // },
+
+        // to use the weather module replace <your_location> with your city or town
+    // note: do not use spaces: new york would be newyork
+    // "custom/weather": {
+    //   // "exec": "~/.config/waybar/scripts/weather.sh batumi", 
+    //   "exec": "sh ~/.config/waybar/scripts/openweather-city.sh", 
+    //   "return-type": "json",
+    //   "interval": 600
+    // },
+
+    // "custom/weather" : {
+    //   "tooltip" : true,
+    //   "format" : "{}",
+    //   "restart-interval" : 300,
+    //   "exec" : "~/.config/waybar/scripts/waybar-wttr.py",
+    //   "return-type" : "json"
+    // },
+
+    "custom/weather": {
+      "exec": "curl -s wttr.in/Moscow?format=1 | tr -s ' '",
+      "interval": 300,
+      "format": "{}",
+      "tooltip": false
+    }
+    
+}
+
+
+   // "mpris": {
+   //    "format": "DEFAULT: {player_icon} {artist} : {title} - [{length}]",
+   //    "format-paused": "DEFAULT: {status_icon} {artist} : {title} - [{length}]",
+   //    "player-icons": {
+   //      "default": "▶",
+   //      "mpv": "🎵"
+   //    },
+   //    "status-icons": {
+   //      "paused": "⏸"
+   //    },
+   //    "ignored-players": ["firefox"]
+   //  },
+    
+    // "custom/spotify": {
+    //   "exec": "/usr/bin/python3 ~/.config/hypr/mediaplayer.py --player spotify",
+    //   "format": " {}",
+    //   "return-type": "json",
+    //   "on-click": "spotifyctl -q playpause",
+    //   "on-scroll-up": "spotifyctl -q next",
+    //   "on-scroll-down": "spotifyctl -q previous"
+    //  },
+    //  
+    // 
+    // "custom/pomo": {
+    //   "format": " {}",
+    //   "interval" : 100,
+    //   "exec" : "pomo status",
+    //   "exec-if" : "exit 0"
+    // },
+    // 
+    // "custom/pomo": {
+    //   "format": " {}",
+    //   "interval" : 100,
+    //   "exec" : "pomo status",
+    //   "exec-if" : "exit 0"
+    // },
+    // 

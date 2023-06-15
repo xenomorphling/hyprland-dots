@@ -1,0 +1,264 @@
+* {
+  /* border: none; */
+  border-radius: 0px;
+  font-family: "Input Mono", "Font Awesome 6 Pro Solid";
+  font-weight: 500;
+  font-size: 13px;
+  min-height: 20px;
+}
+
+window#waybar {
+  background: rgba(25, 35, 48, 0.5);
+  /* background: #192330; */
+  /* background: transparent; */
+  color: #cdd6f4;
+  opacity: 1;
+}
+
+tooltip {
+  background: #12121e;
+  border-radius: 7px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #11111b;
+}
+
+#workspaces {
+  /* background: #061923; */
+  background: rgba(25, 35, 48, 0.9);
+  border-radius: 7px;
+  margin-left: 10px;
+  padding-right: 0px;
+  padding-left: 5px;
+}
+
+#workspaces button {
+  padding: 1px 10px 1px 10px;
+  color: #696c97;
+  margin: 5px 5px 5px 3px;
+  /* margin-left: 10px; */
+}
+
+#workspaces button.active {
+  color: #63f26f;
+  background: #696c97;
+  border-radius: 7px;
+}
+
+#workspaces button.focused {
+  color: #707880;
+  background: #eba0ac;
+  border-radius: 7px;
+}
+
+#workspaces button.urgent {
+  color: #696c97;
+  /* background: #f28fad; */
+  border-radius: 7px;
+}
+
+#workspaces button:hover {
+  background: #6791c9;
+  color: #cdd6f4;
+  border-radius: 7px;
+}
+
+/* #custom-power_profile, */
+/* #custom-weather, */
+
+#custom-weather,
+#launcher,
+#window,
+#clock,
+#battery,
+#mpris,
+#pulseaudio,
+#custom-pacman,
+#network,
+#bluetooth,
+#temperature,
+#workspaces,
+#tray,
+#mpd,
+#custom-pomodoro,
+#cpu,
+#memory,
+#custom-spotify,
+#language,
+#custom-sensors,
+#temperature,
+#modbackground {
+  /* background: #061923; */
+  background: rgba(25, 35, 48, 0.9);
+  opacity: 1;
+  padding: 0px 7px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  /* border: 1px solid #b5b0a7; */
+}
+
+#backlight {
+  border-radius: 7px 0px 0px 7px;
+  background: #1e1e2e;
+  opacity: 1;
+  padding: 0px 7px;
+  margin-top: 5px;
+  margin-bottom: 6px;
+}
+
+#pulseaudio {
+  color: #89b4fa;
+  border-radius: 10px 0px 0px 10px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#pulseaudio.microphone {
+  color: #cba6f7;
+  border-left: 0px;
+  border-right: 0px;
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 5px;
+}
+
+#cpu {
+  color: #89dceb;
+  border-radius: 7px 0px 0px 7px;
+  margin-left: 5px;
+}
+
+#memory {
+  color: #94e2d5;
+  border-radius: 0px 7px 7px 0px;
+  margin-right: 5px;
+}
+
+#tray {
+  border-radius: 7px;
+  margin-right: 5px;
+}
+
+#tray > .passive {
+  -gtk-icon-effect: dim;
+}
+
+/* #custom-power_profile { */
+/*   color: #a6e3a1; */
+/*   border-left: 0px; */
+/*   border-right: 0px; */
+/* } */
+
+#window {
+  border-radius: 7px;
+  margin-left: 10px;
+  margin-right: 60px;
+}
+
+#clock {
+  color: #fab387;
+  border-radius: 7px;
+  /* margin-left: 10px; */
+  margin-right: 5px;
+  padding-right: 10px;
+  border-right: 0px;
+}
+
+#network {
+  color: #f9e2af;
+  border-radius: 7px;
+  margin-right: 5px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#bluetooth {
+  color: #89b4fa;
+  border-radius: 7px;
+  margin-right: 5px;
+}
+
+#battery {
+  color: #a6e3a1;
+  border-radius: 7px;
+  margin-right: 5px;
+  border-left: 0px;
+}
+
+#custom-spotify {
+  border-radius: 7px;
+  margin-right: 5px;
+  border-right: 0px;
+}
+
+#mpris {
+  border-radius: 7px;
+  margin-right: 5px;
+  border-right: 0px;
+}
+
+#mpris.paused {
+  border-bottom: 2px solid @yellow;
+}
+
+#mpd {
+  border-radius: 7px;
+  margin-right: 5px;
+  border-right: 0px;
+}
+
+#custom-pacman {
+  color: #ff7a91;
+  border-radius: 7px;
+  margin-right: 5px;
+}
+
+#custom-pomodoro {
+  color: #cdd6e1;
+  border-radius: 7px;
+  margin-right: 5px;
+}
+
+#custom-pomodoro.paused {
+  border-bottom: 2px solid @yellow;
+}
+
+#language {
+  color: #f9e2af;
+  border-radius: 7px;
+  margin-right: 5px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#temperature {
+  color: #f9e2af;
+  border-radius: 7px;
+  margin-right: 5px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#custom-sensors {
+  color: #f9e2af;
+  border-radius: 7px;
+  margin-right: 5px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+#custom-weather {
+  color: #a6e3a1;
+  border-radius: 7px;
+  margin-right: 5px;
+  border-left: 0px;
+  border-right: 0px;
+}
+
+/**/
+/* #custom-weather { */
+/*   border-radius: 0px 10px 10px 0px; */
+/*   border-right: 0px; */
+/*   margin-left: 0px; */
+/* } */
