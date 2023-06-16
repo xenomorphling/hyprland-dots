@@ -3,7 +3,7 @@
 |Distro|[Arch](https://archlinux.org/)|
 |:---:|:---:|
 |WM|[Hyprland](https://hyprland.org/)|
-|Bar|Waybar](https://github.com/Alexays/Waybar)|
+|Bar|[Waybar](https://github.com/Alexays/Waybar)|
 |Menu|[Rofi](https://github.com/davatorium/rofi)|
 |Terminal|[Kitty](https://github.com/kovidgoyal/kitty)|
 |Fetch|[Neofetch](https://github.com/dylanaraps/neofetch)|
